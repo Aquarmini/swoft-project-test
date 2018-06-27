@@ -32,6 +32,7 @@ class OrmController
     public function users(Response $response): Response
     {
         $users = User::findAll();
+        \co::sleep(1);
         $results = $users->getResult();
 
         return $response->json($results);
