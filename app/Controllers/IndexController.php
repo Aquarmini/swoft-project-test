@@ -51,6 +51,7 @@ class IndexController
         if ($request->getMethod() === 'POST') {
             return $response->json($data);
         }
+
         return view('index/index', $data);
     }
 }
