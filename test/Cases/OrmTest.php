@@ -14,8 +14,9 @@ class OrmTest extends AbstractTestCase
 {
     public function testGetUser()
     {
-        $user = User::findById(1);
+        /** @var User $user */
+        $user = User::findById(1)->getResult();
 
-        print_r($user);exit;
+        $this->assertEquals('limx', $user->getName());
     }
 }
