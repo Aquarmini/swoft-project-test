@@ -37,4 +37,21 @@ class OrmController
 
         return $response->json($results);
     }
+
+    /**
+     * @RequestMapping(route="user/{id}", method=RequestMethod::POST)
+     */
+    public function save(int $id, Response $response): Response
+    {
+        $user = User::findById($id)->getResult();
+        if (empty($user)) {
+            return $response->json([
+                'code' => 1001,
+                'message' => 'User Not Find'
+            ]);
+        }
+
+        $user->update();
+        return $response->json([$id]);
+    }
 }
