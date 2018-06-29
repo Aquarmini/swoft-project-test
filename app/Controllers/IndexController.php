@@ -14,10 +14,11 @@ use Swoft\App;
 use Swoft\Http\Server\Bean\Annotation\Controller;
 use Swoft\Http\Server\Bean\Annotation\RequestMapping;
 use Swoft\Http\Server\Bean\Annotation\RequestMethod;
-
+use Swoft\Bean\Annotation\Inject;
 use Swoft\View\Bean\Annotation\View;
 use Swoft\Http\Message\Server\Response;
 use Swoft\Http\Message\Server\Request;
+use App\Core\Constants\ErrorCode;
 
 /**
  * Class IndexController
@@ -27,9 +28,17 @@ use Swoft\Http\Message\Server\Request;
 class IndexController
 {
     /**
+     * 注入自定义Response
+     * @Inject()
+     *
+     * @var \App\Core\HttpServer\Response
+     */
+    private $response;
+
+    /**
      * @RequestMapping(route="/", method={RequestMethod::GET,RequestMethod::POST})
      */
-    public function index(Request $request, Response $response): Response
+    public function index(Request $request): Response
     {
         $name = 'Swoft Framework';
         $notes = [
@@ -49,7 +58,7 @@ class IndexController
         $data = compact('name', 'notes', 'links');
 
         if ($request->getMethod() === 'POST') {
-            return $response->json($data);
+            return $this->response->success($data);
         }
 
         return view('index/index', $data);
