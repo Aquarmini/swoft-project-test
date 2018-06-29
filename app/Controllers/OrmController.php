@@ -24,7 +24,7 @@ use Swoft\Http\Message\Server\Response;
  * @Controller(prefix="/orm")
  * @package App\Controllers
  */
-class OrmController
+class OrmController extends BaseController
 {
     /**
      * @RequestMapping(route="users", method=RequestMethod::GET)
@@ -35,7 +35,7 @@ class OrmController
         \co::sleep(1);
         $results = $users->getResult();
 
-        return $response->json($results);
+        return $this->response->success($results);
     }
 
     /**
@@ -43,6 +43,7 @@ class OrmController
      */
     public function save(int $id, Response $response): Response
     {
+        /** @var User $user */
         $user = User::findById($id)->getResult();
         if (empty($user)) {
             return $response->json([
@@ -51,7 +52,7 @@ class OrmController
             ]);
         }
 
-        $user->update();
-        return $response->json([$id]);
+        $res = $user->update()->getResult();
+        return $this->response->success($res);
     }
 }

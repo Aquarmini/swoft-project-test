@@ -25,30 +25,30 @@ use Swoft\Http\Server\Bean\Annotation\RequestMethod;
  * @Controller(prefix="/co")
  * @package App\Controllers
  */
-class CoController
+class CoController extends BaseController
 {
     /**
      * this is a example action. access uri path: /co
      * @RequestMapping(route="index", method=RequestMethod::GET)
      * @return array
      */
-    public function index(): array
+    public function index()
     {
         Test::instance()->incr();
         \co::sleep(1);
-        return [Test::instance()->get()];
+        return $this->response->success(Test::instance()->get());
     }
 
     /**
      * @author limx
      * @RequestMapping(route="index2", method=RequestMethod::GET)
      */
-    public function index2(): array
+    public function index2()
     {
         TestCo::instance()->incr();
         TestCo::instance()->incr();
         TestCo::instance()->incr();
         \co::sleep(1);
-        return [TestCo::instance()->get()];
+        return $this->response->success(TestCo::instance()->get());
     }
 }
