@@ -17,7 +17,7 @@ use Xin\Swoft\Db\Pool\CreateConnectionTrait;
 /**
  * OtherDbPool
  *
- * @Pool("default.master")
+ * @Pool("bdModel.master")
  */
 class DbPool extends SwoftDbPool
 {
