@@ -12,7 +12,7 @@ use Swoft\Db\Types;
 
 /**
  * 用户表
- * @Entity(instance="dbModel")
+ * @Entity()
  * @Table(name="user")
  * @uses      User
  */
