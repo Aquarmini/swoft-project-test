@@ -2,10 +2,10 @@
 /**
  * This file is part of Swoft.
  *
- * @link    https://swoft.org
+ * @link     https://swoft.org
  * @document https://doc.swoft.org
- * @contact group@swoft.org
- * @license https://github.com/swoft-cloud/swoft/blob/master/LICENSE
+ * @contact  group@swoft.org
+ * @license  https://github.com/swoft-cloud/swoft/blob/master/LICENSE
  */
 
 namespace App\Controllers;
@@ -17,7 +17,6 @@ use Swoft\Http\Server\Bean\Annotation\RequestMethod;
 use Swoft\View\Bean\Annotation\View;
 use Swoft\Http\Message\Server\Response;
 use Swoft\Http\Message\Server\Request;
-use App\Core\Constants\ErrorCode;
 
 /**
  * Class IndexController
@@ -31,22 +30,7 @@ class IndexController extends BaseController
      */
     public function index(Request $request): Response
     {
-        $name = 'Swoft Framework';
-        $notes = [
-            'New Generation of PHP Framework',
-            'Hign Performance, Coroutine and Full Stack'
-        ];
-        $links = [
-            [
-                'name' => 'Home',
-                'link' => 'http://www.swoft.org',
-            ],
-            [
-                'name' => 'Documentation',
-                'link' => 'http://doc.swoft.org',
-            ]
-        ];
-        $data = compact('name', 'notes', 'links');
+        $data = config('message');
 
         if ($request->getMethod() === 'POST') {
             return $this->response->success($data);
