@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models\Entity;
 
 use Xin\Swoft\Db\Model;
@@ -11,8 +12,7 @@ use Swoft\Db\Types;
 
 /**
  * 用户表
-
- * @Entity()
+ * @Entity(instance="dbModel")
  * @Table(name="user")
  * @uses      User
  */

@@ -18,6 +18,6 @@ class HttpTest extends AbstractTestCase
         $res = json_decode($res->getBody()->getContents(), true);
 
         $this->assertEquals(0, $res['code']);
-        $this->assertEquals('Swoft Framework', $res['data']['name']);
+        $this->assertEquals('Swoft', $res['data']['name']);
     }
 }
