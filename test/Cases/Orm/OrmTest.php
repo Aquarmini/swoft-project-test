@@ -8,6 +8,7 @@
 // +----------------------------------------------------------------------
 namespace Swoft\Test\Cases\Http;
 
+use App\Models\Entity\EventUser;
 use App\Models\Entity\User;
 use Swoft\Test\AbstractTestCase;
 
@@ -19,5 +20,24 @@ class OrmTest extends AbstractTestCase
         $user = User::findById(1)->getResult();
 
         $this->assertEquals('limx', $user->getName());
+    }
+
+    public function testUpdateUser()
+    {
+        $user = new User();
+        $user->setName('test.' . rand(0, 9999));
+        $user->setRoleId(1);
+        $id = $user->save()->getResult();
+        $this->assertTrue($id > 0);
+
+        sleep(1);
+
+        $user = EventUser::findById($id)->getResult();
+        $res = $user->update()->getResult();
+        $this->assertNotNull($user->getUpdatedAt());
+        $this->assertEquals(1, $res);
+
+        $res = $user->delete()->getResult();
+        $this->assertEquals(1, $res);
     }
 }
