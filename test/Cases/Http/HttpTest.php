@@ -20,4 +20,14 @@ class HttpTest extends AbstractTestCase
         $this->assertEquals(0, $res['code']);
         $this->assertEquals('Swoft', $res['data']['name']);
     }
+
+    public function testHttpUser()
+    {
+        $res = $this->json('POST', '/orm/user/1');
+        $res = json_decode($res->getBody()->getContents(), true);
+
+        print_r($res);
+        $this->assertEquals(0, $res['code']);
+        $this->assertEquals('Swoft', $res['data']['name']);
+    }
 }

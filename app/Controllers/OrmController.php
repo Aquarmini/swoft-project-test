@@ -10,14 +10,16 @@
 
 namespace App\Controllers;
 
+use App\Models\Dao\UserDao;
 use App\Models\Entity\User;
 use Swoft\Core\RequestContext;
 use Swoft\Http\Server\Bean\Annotation\Controller;
 use Swoft\Http\Server\Bean\Annotation\RequestMapping;
 use Swoft\Http\Server\Bean\Annotation\RequestMethod;
 
-// use Swoft\View\Bean\Annotation\View;
+use Swoft\View\Bean\Annotation\View;
 use Swoft\Http\Message\Server\Response;
+use Swoft\Bean\Annotation\Inject;
 
 /**
  * Class OrmController
@@ -26,6 +28,12 @@ use Swoft\Http\Message\Server\Response;
  */
 class OrmController extends BaseController
 {
+    /**
+     * @Inject()
+     * @var UserDao
+     */
+    private $userDao;
+
     /**
      * @RequestMapping(route="users", method=RequestMethod::GET)
      */
@@ -36,6 +44,16 @@ class OrmController extends BaseController
         $results = $users->getResult();
 
         return $this->response->success($results);
+    }
+
+    /**
+     * @RequestMapping(route="user/{id}", method=RequestMethod::GET)
+     * @author limx
+     */
+    public function user(int $id)
+    {
+        $info = $this->userDao->findById($id);
+        return $this->response->success($info);
     }
 
     /**
