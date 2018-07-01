@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 namespace Swoft\Test\Cases;
 
-use App\Models\Entity\User;
+use Swoft\Test\AbstractTestCase;
 
 class HttpTest extends AbstractTestCase
 {

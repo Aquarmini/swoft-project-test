@@ -6,9 +6,10 @@
 // +----------------------------------------------------------------------
 // | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
 // +----------------------------------------------------------------------
-namespace Swoft\Test\Cases;
+namespace Swoft\Test\Cases\Http;
 
 use App\Models\Entity\User;
+use Swoft\Test\AbstractTestCase;
 
 class OrmTest extends AbstractTestCase
 {
