@@ -20,19 +20,4 @@ class OrmTest extends AbstractTestCase
 
         $this->assertEquals('limx', $user->getName());
     }
-
-    public function testUpdateUser()
-    {
-        $user = new User();
-        $user->setName('test.' . rand(0, 9999));
-        $user->setRoleId(1);
-
-        $user->save();
-        $this->assertEquals($user->getCreatedAt(), $user->getUpdatedAt());
-
-        sleep(1);
-
-        $user->update();
-        $this->assertNotEquals($user->getCreatedAt(), $user->getUpdatedAt());
-    }
 }
