@@ -24,7 +24,7 @@ class TaskTest extends AbstractTestCase
         $res = $redis->exists($key);
         $this->assertTrue(empty($res));
 
-        sleep(3);
+        sleep(2);
 
         $res = $redis->exists($key);
         $this->assertFalse(empty($res));

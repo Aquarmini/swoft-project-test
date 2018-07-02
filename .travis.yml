@@ -36,7 +36,7 @@ before_script:
   - composer install --prefer-dist --optimize-autoloader
   - cp .env.example .env
   - bin/swoft app:init
-  - bin/swoft queue:handle &
+  - bin/swoft queue:handle &> /dev/null &
   - bin/swoft start -d
 
 script: composer test
