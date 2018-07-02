@@ -38,5 +38,6 @@ before_script:
   - bin/swoft app:init
   - bin/swoft queue:handle &> /dev/null &
   - bin/swoft start -d
+  - sleep 5
 
 script: composer test
