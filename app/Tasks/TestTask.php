@@ -37,10 +37,9 @@ class TestTask
      */
     public function work(string $key, string $value)
     {
-        echo $key . PHP_EOL;
+        sleep(1);
         /** @var Redis $redis */
         $redis = bean(Redis::class);
-        echo $value . PHP_EOL;
         $redis->set($key, $value);
         return 'success';
     }
