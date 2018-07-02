@@ -25,7 +25,7 @@ class DemoServicePoolConfig extends ServicePoolConfig
      * the name of pool
      *
      *
-     * @Value(env="${DEMO_SERVICE_URL}")
+     * @Value(env="${DEMO_SERVICE_NAME}")
      * @var string
      */
     protected $name = '';
