@@ -6,7 +6,7 @@
 // +----------------------------------------------------------------------
 // | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
 // +----------------------------------------------------------------------
-namespace Swoft\Test\Cases\Http;
+namespace Swoft\Test\Cases;
 
 use App\Models\Entity\EventUser;
 use App\Models\Entity\User;
