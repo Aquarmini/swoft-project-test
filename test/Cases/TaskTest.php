@@ -2,6 +2,9 @@
 
 namespace Swoft\Test\Cases;
 
+use App\Core\Queue\Queue;
+use App\Jobs\TestJob;
+use App\Models\Entity\User;
 use Swoft\Redis\Redis;
 use Swoft\Task\Task;
 use Swoft\Test\AbstractTestCase;
@@ -25,5 +28,18 @@ class TaskTest extends AbstractTestCase
 
         $res = $redis->exists($key);
         $this->assertTrue($res > 0);
+    }
+
+    public function testQueue()
+    {
+        $user = new User();
+        $user->setName('xxx' . rand(0, 9999));
+        $user->setRoleId(1);
+        $id = $user->save()->getResult();
+        Queue::instance()->push(new TestJob($id));
+
+        sleep(2);
+        $user = User::findById($id)->getResult();
+        $this->assertNull($user);
     }
 }
