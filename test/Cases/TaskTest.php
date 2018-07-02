@@ -24,10 +24,10 @@ class TaskTest extends AbstractTestCase
         $res = $redis->exists($key);
         $this->assertTrue(empty($res));
 
-        sleep(2);
+        sleep(3);
 
         $res = $redis->exists($key);
-        $this->assertTrue($res > 0);
+        $this->assertFalse(empty($res));
     }
 
     public function testQueue()
