@@ -22,9 +22,17 @@ class ArrayTest extends AbstractTestCase
         $this->assertEquals(['t1' => 0, 't2' => ''], $array);
 
         $array = ['t1' => '', 't2' => ''];
-        $array['t1'] = is_numeric($array['t1']) ?: 0;
-        $array['t2'] = is_numeric($array['t2']) ?: 2;
+        $array['t1'] = is_numeric($array['t1']) ? $array['t1'] : 0;
+        $array['t2'] = is_numeric($array['t2']) ? $array['t2'] : 2;
 
-        $this->assertEquals(['t1' => 0, 't2' => 2], $array);
+        $this->assertTrue($array['t1'] === 0);
+        $this->assertTrue($array['t2'] === 2);
+
+        $array = ['t1' => '', 't2' => 3];
+        $array['t1'] = is_numeric($array['t1']) ? $array['t1'] : 0;
+        $array['t2'] = is_numeric($array['t2']) ? $array['t2'] : 2;
+
+        $this->assertTrue($array['t1'] === 0);
+        $this->assertTrue($array['t2'] === 3);
     }
 }
