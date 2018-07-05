@@ -1,15 +1,18 @@
 <?php
-
+/**
+ * This file is part of Swoft.
+ *
+ * @link     https://swoft.org
+ * @document https://doc.swoft.org
+ * @contact  group@swoft.org
+ * @license  https://github.com/swoft-cloud/swoft/blob/master/LICENSE
+ */
 namespace Swoft\Test\Cases;
 
 use App\Boot\TestProcess;
-use App\Core\Queue\Queue;
-use App\Jobs\TestJob;
-use App\Models\Entity\User;
 use App\Process\Test2Process;
 use Swoft\Process\ProcessBuilder;
 use Swoft\Redis\Redis;
-use Swoft\Task\Task;
 use Swoft\Test\AbstractTestCase;
 
 class ProcessTest extends AbstractTestCase

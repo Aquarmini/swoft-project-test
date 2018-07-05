@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of Swoft.
+ *
+ * @link     https://swoft.org
+ * @document https://doc.swoft.org
+ * @contact  group@swoft.org
+ * @license  https://github.com/swoft-cloud/swoft/blob/master/LICENSE
+ */
 namespace App\Models\Entity;
 
 use Swoft\Db\Model;
@@ -7,7 +15,6 @@ use Swoft\Db\Bean\Annotation\Entity;
 use Swoft\Db\Bean\Annotation\Id;
 use Swoft\Db\Bean\Annotation\Required;
 use Swoft\Db\Bean\Annotation\Table;
-use Swoft\Db\Types;
 
 /**
  * 用户表
@@ -19,7 +26,7 @@ use Swoft\Db\Types;
 class User extends Model
 {
     /**
-     * @var int $id 
+     * @var int $id
      * @Id()
      * @Column(name="id", type="integer")
      */
@@ -39,13 +46,13 @@ class User extends Model
     private $roleId;
 
     /**
-     * @var string $createdAt 
+     * @var string $createdAt
      * @Column(name="created_at", type="datetime", default="CURRENT_TIMESTAMP")
      */
     private $createdAt;
 
     /**
-     * @var string $updatedAt 
+     * @var string $updatedAt
      * @Column(name="updated_at", type="datetime", default="CURRENT_TIMESTAMP")
      */
     private $updatedAt;
@@ -148,5 +155,4 @@ class User extends Model
     {
         return $this->updatedAt;
     }
-
 }

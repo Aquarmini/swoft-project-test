@@ -12,7 +12,6 @@ namespace App\Pool\Config;
 
 use Swoft\Bean\Annotation\Bean;
 use Swoft\Bean\Annotation\Value;
-use Swoft\Pool\PoolProperties;
 
 /**
  * the config of rpc default service

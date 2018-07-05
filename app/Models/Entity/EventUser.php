@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * This file is part of Swoft.
+ *
+ * @link     https://swoft.org
+ * @document https://doc.swoft.org
+ * @contact  group@swoft.org
+ * @license  https://github.com/swoft-cloud/swoft/blob/master/LICENSE
+ */
 namespace App\Models\Entity;
 
 use Xin\Swoft\Db\Model;
@@ -8,7 +15,6 @@ use Swoft\Db\Bean\Annotation\Entity;
 use Swoft\Db\Bean\Annotation\Id;
 use Swoft\Db\Bean\Annotation\Required;
 use Swoft\Db\Bean\Annotation\Table;
-use Swoft\Db\Types;
 use Xin\Swoft\Db\Traits\UpdateEventTrait;
 
 /**
@@ -151,5 +157,4 @@ class EventUser extends Model
     {
         return $this->updatedAt;
     }
-
 }
