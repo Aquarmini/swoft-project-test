@@ -45,4 +45,14 @@ class HttpTest extends AbstractTestCase
         $this->assertEquals(0, $res['code']);
         $this->assertEquals('2.0.0@beta', $res['data']);
     }
+
+    public function testJsonBigInt()
+    {
+        $res = $this->json('GET', '/test/json/bigint');
+        $res = json_decode($res->getBody()->getContents(), true);
+
+        $this->assertEquals(0, $res['code']);
+        $this->assertEquals('中文', $res['data']['str']);
+        $this->assertEquals('1111111111111111111111', $res['data']['bigint']);
+    }
 }
