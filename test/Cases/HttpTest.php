@@ -36,4 +36,13 @@ class HttpTest extends AbstractTestCase
         $this->assertEquals(0, $res['code']);
         $this->assertEquals('limx', $res['data']['name']);
     }
+
+    public function testAspect()
+    {
+        $res = $this->json('GET', '/aop');
+        $res = json_decode($res->getBody()->getContents(), true);
+
+        $this->assertEquals(0, $res['code']);
+        $this->assertEquals('2.0.0@beta', $res['data']);
+    }
 }

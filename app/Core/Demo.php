@@ -11,6 +11,8 @@ use Swoft\Bean\Annotation\Cacheable;
  */
 class Demo
 {
+    public $version = '1.0.0';
+
     /**
      * 测试Aop
      * @author limx
@@ -18,6 +20,6 @@ class Demo
      */
     public function version()
     {
-        return '1.0.0';
+        return $this->version;
     }
 }

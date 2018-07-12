@@ -53,7 +53,7 @@ class DemoAspect
     {
         $result = $joinPoint->getReturn();
         var_dump($result);
-        return $result . 'after_return';
+        return $result . '@beta';
     }
 
     /**
@@ -63,10 +63,13 @@ class DemoAspect
      */
     public function around(ProceedingJoinPoint $proceedingJoinPoint)
     {
-        $test = ' around-before1 ';
+        var_dump(' around-before1 ');
+        $target = $proceedingJoinPoint->getTarget();
+        var_dump($target);
+        $target->version = '2.0.0';
         $result = $proceedingJoinPoint->proceed();
-        $test .= ' around-after1 ';
-        return $result . $test;
+        var_dump(' around-after1 ');
+        return $result;
     }
 
     /**
