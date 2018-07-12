@@ -9,7 +9,7 @@
  */
 namespace App\Fallback;
 
-use App\Lib\DemoServiceInterface;
+use App\Lib\Demo2ServiceInterface;
 use Swoft\Sg\Bean\Annotation\Fallback;
 use Swoft\Core\ResultInterface;
 
@@ -19,7 +19,7 @@ use Swoft\Core\ResultInterface;
  * @method ResultInterface deferVersion
  * @package App\Fallback
  */
-class Demo2ServiceFallback implements DemoServiceInterface
+class Demo2ServiceFallback implements Demo2ServiceInterface
 {
     public function version()
     {

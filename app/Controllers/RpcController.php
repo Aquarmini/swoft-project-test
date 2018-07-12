@@ -48,7 +48,6 @@ class RpcController extends BaseController
     private $userDao;
 
     /**
-     * this is a example action. access uri path: /rpc
      * @RequestMapping(route="version", method=RequestMethod::GET)
      * @return array
      */
@@ -59,7 +58,6 @@ class RpcController extends BaseController
     }
 
     /**
-     * this is a example action. access uri path: /rpc
      * @RequestMapping(route="version2", method=RequestMethod::GET)
      * @return array
      */
