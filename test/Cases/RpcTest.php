@@ -20,6 +20,12 @@ class RpcTest extends AbstractTestCase
 
         $this->assertEquals(0, $res['code']);
         // $this->assertEquals('1.0.0', $res['data']);
+
+        $res = $this->json('GET', '/rpc/version2');
+        $res = json_decode($res->getBody()->getContents(), true);
+
+        $this->assertEquals(0, $res['code']);
+        // $this->assertEquals('2.0.0', $res['data']);
     }
 
     public function testRpcUser()

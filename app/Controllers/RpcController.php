@@ -10,6 +10,7 @@
 
 namespace App\Controllers;
 
+use App\Lib\Demo2ServiceInterface;
 use App\Lib\DemoServiceInterface;
 use App\Models\Dao\UserDao;
 use Swoft\Bean\Annotation\Inject;
@@ -35,6 +36,12 @@ class RpcController extends BaseController
     private $demoService;
 
     /**
+     * @Reference(name="demo", fallback="demo2Fallback")
+     * @var Demo2ServiceInterface
+     */
+    private $demo2Service;
+
+    /**
      * @Inject()
      * @var UserDao
      */
@@ -48,6 +55,17 @@ class RpcController extends BaseController
     public function version()
     {
         $version = $this->demoService->version();
+        return $this->response->success($version);
+    }
+
+    /**
+     * this is a example action. access uri path: /rpc
+     * @RequestMapping(route="version2", method=RequestMethod::GET)
+     * @return array
+     */
+    public function version2()
+    {
+        $version = $this->demo2Service->version();
         return $this->response->success($version);
     }
 
