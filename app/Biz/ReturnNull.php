@@ -4,6 +4,8 @@ namespace App\Biz;
 
 class ReturnNull
 {
+    use AopTrait;
+
     /**
      * @var string
      */
