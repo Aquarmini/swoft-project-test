@@ -16,4 +16,14 @@ class ClassTest extends AbstractTestCase
             $this->assertEquals('Return value of App\Biz\ReturnNull::getStr() must be of the type string, null returned', $ex->getMessage());
         }
     }
+
+    public function testClassClosure()
+    {
+        $cls = new ReturnNull();
+        $cls->setStr('hello ');
+
+        $res = $cls->callback('world');
+
+        $this->assertEquals('hello world', $res);
+    }
 }

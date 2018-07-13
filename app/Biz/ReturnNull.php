@@ -9,6 +9,15 @@ class ReturnNull
      */
     protected $str;
 
+    public function callback($str)
+    {
+        $cls = function () use ($str) {
+            return $this->getStr() . $str;
+        };
+
+        return $cls();
+    }
+
     /**
      * @return string
      */
