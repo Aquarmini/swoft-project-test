@@ -10,9 +10,12 @@
 
 namespace App\Controllers;
 
+use Swoft\Http\Message\Server\Request;
 use Swoft\Http\Server\Bean\Annotation\Controller;
 use Swoft\Http\Server\Bean\Annotation\RequestMapping;
 use Swoft\Http\Server\Bean\Annotation\RequestMethod;
+use Swoft\Bean\Annotation\Number;
+use Swoft\Bean\Annotation\Strings;
 
 // use Swoft\View\Bean\Annotation\View;
 // use Swoft\Http\Message\Server\Response;
@@ -34,5 +37,18 @@ class TestController extends BaseController
         $data['str'] = '中文';
 
         return $this->response->success($data);
+    }
+
+    /**
+     * @Number(name="test.id", max=10)
+     * @Strings(name="test.name", default="limx")
+     * @RequestMapping(route="json", method=RequestMethod::POST)
+     */
+    public function json(Request $request)
+    {
+        $id = $request->json('test.id');
+        $name = $request->json('test.name');
+
+        return $this->response->success([$id, $name]);
     }
 }
