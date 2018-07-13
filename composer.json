@@ -63,10 +63,6 @@
         "test": "./vendor/bin/phpunit -c phpunit.xml"
     },
     "repositories": {
-        "packagist": {
-            "type": "composer",
-            "url": "https://packagist.phpcomposer.com"
-        },
         "swoft-db-model": {
             "type": "git",
             "url": "https://github.com/limingxinleo/swoft-db-model.git"
