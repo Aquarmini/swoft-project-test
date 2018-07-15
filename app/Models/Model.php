@@ -10,8 +10,10 @@
 
 namespace App\Models;
 
-use Xin\Swoft\Db\Model as SwoftModel;
+use Swoft\Db\Model as SwoftModel;
+use Xin\Swoft\Db\Entity\ModelCacheable;
 
 class Model extends SwoftModel
 {
+    use ModelCacheable;
 }

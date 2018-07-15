@@ -9,7 +9,7 @@
  */
 namespace App\Models\Entity;
 
-use Swoft\Db\Model;
+use App\Models\Model;
 use Swoft\Db\Bean\Annotation\Column;
 use Swoft\Db\Bean\Annotation\Entity;
 use Swoft\Db\Bean\Annotation\Id;
@@ -18,7 +18,6 @@ use Swoft\Db\Bean\Annotation\Table;
 
 /**
  * 用户表
-
  * @Entity()
  * @Table(name="user")
  * @uses      User

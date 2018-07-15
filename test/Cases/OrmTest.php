@@ -17,7 +17,9 @@ namespace Swoft\Test\Cases;
 
 use App\Models\Entity\EventUser;
 use App\Models\Entity\User;
+use Swoft\Redis\Redis;
 use Swoft\Test\AbstractTestCase;
+use Xin\Swoft\Db\Entity\Manager\ModelCacheManager;
 
 class OrmTest extends AbstractTestCase
 {
@@ -46,5 +48,12 @@ class OrmTest extends AbstractTestCase
 
         $res = $user->delete()->getResult();
         $this->assertEquals(1, $res);
+    }
+
+    public function testFindOneByCache()
+    {
+        $user = User::findOneByCache(1);
+        $redis = bean(Redis::class);
+        $this->assertEquals(1, $redis->exists(ModelCacheManager::getCacheKey(1, User::class)));
     }
 }
