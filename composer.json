@@ -35,7 +35,8 @@
         "limingxinleo/swoft-db-model": "^1.0",
         "limingxinleo/x-phalcon-enum": "^1.1",
         "limingxinleo/x-swoole-queue": "^1.1",
-        "nikic/php-parser": "^4.0"
+        "nikic/php-parser": "^4.0",
+        "limingxinleo/swoft-entity-cache": "dev-master"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "dev-master",
@@ -67,6 +68,10 @@
         "swoft-db-model": {
             "type": "git",
             "url": "https://github.com/limingxinleo/swoft-db-model.git"
+        },
+        "swoft-entity-cache": {
+            "type": "git",
+            "url": "https://github.com/limingxinleo/swoft-entity-cache.git"
         }
     }
 }

@@ -8,6 +8,9 @@
  * @license  https://github.com/swoft-cloud/swoft/blob/master/LICENSE
  */
 
+use Xin\Swoft\Db\Entity\Helper\BeanHelper;
+
+$beanScan = BeanHelper::getBeanScan();
 return [
     'env' => env('APP_ENV', 'test'),
     'debug' => env('APP_DEBUG', false),
@@ -17,6 +20,7 @@ return [
         'App\Commands',
         'App\Boot',
     ],
+    'beanScan' => $beanScan,
     'excludeScan' => [
 
     ],
