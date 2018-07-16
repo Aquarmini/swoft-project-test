@@ -1,4 +1,7 @@
 <?php
+
+use Xin\Swoft\Db\Entity\Helper\BeanHelper;
+
 $beanScan = [
     'App\\Breaker',
     'App\\Controllers',
@@ -15,4 +18,12 @@ $beanScan = [
     'App\\Tasks',
 ];
 
+$customBean = [
+    'App\\Biz',
+    'App\\Config',
+    'App\\Jobs',
+];
+
+$entityCacheBean = BeanHelper::getEntityCacheBeanScan();
+$beanScan = array_merge($beanScan, $customBean, $entityCacheBean);
 return $beanScan;
