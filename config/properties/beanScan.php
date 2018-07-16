@@ -16,6 +16,7 @@ $beanScan = [
     'App\\Process',
     'App\\Services',
     'App\\Tasks',
+    'App\\WebSocket',
 ];
 
 $customBean = [
