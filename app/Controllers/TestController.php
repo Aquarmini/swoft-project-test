@@ -10,6 +10,7 @@
 
 namespace App\Controllers;
 
+use App\Core\Constants\ErrorCode;
 use Swoft\Http\Message\Server\Request;
 use Swoft\Http\Server\Bean\Annotation\Controller;
 use Swoft\Http\Server\Bean\Annotation\RequestMapping;
@@ -37,6 +38,14 @@ class TestController extends BaseController
         $data['str'] = '中文';
 
         return $this->response->success($data);
+    }
+
+    /**
+     * @RequestMapping(route="fail", method=RequestMethod::GET)
+     */
+    public function fail(\App\Core\HttpServer\Response $response)
+    {
+        return $response->success('Action 注入');
     }
 
     /**
