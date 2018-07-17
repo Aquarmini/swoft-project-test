@@ -11,7 +11,7 @@
 namespace App\Models;
 
 use Swoft\Db\Model as SwoftModel;
-use Xin\Swoft\Db\Entity\ModelCacheable;
+use Swoftx\Db\Entity\ModelCacheable;
 
 class Model extends SwoftModel
 {

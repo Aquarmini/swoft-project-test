@@ -1,6 +1,6 @@
 <?php
 
-use Xin\Swoft\Db\Entity\Helper\BeanHelper;
+use Swoftx\Db\Entity\Helper\BeanHelper;
 
 $beanScan = [
     'App\\Breaker',
