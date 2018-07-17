@@ -19,7 +19,7 @@ use App\Models\Entity\EventUser;
 use App\Models\Entity\User;
 use Swoft\Redis\Redis;
 use Swoft\Test\AbstractTestCase;
-use Xin\Swoft\Db\Entity\Manager\ModelCacheManager;
+use Swoftx\Db\Entity\Manager\ModelCacheManager;
 
 class OrmTest extends AbstractTestCase
 {
