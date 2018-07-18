@@ -23,8 +23,8 @@ $customBean = [
     'App\\Biz',
     'App\\Config',
     'App\\Jobs',
+    'Swoftx\\Db\\Entity\\',
 ];
 
-$entityCacheBean = BeanHelper::getEntityCacheBeanScan();
-$beanScan = array_merge($beanScan, $customBean, $entityCacheBean);
+$beanScan = array_merge($beanScan, $customBean);
 return $beanScan;
