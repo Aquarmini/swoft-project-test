@@ -1,8 +1,10 @@
 <?php
+
 namespace Swoft\Test\Cases\Another;
 
 use App\Biz\ProxyVisitor;
 use App\Biz\ReturnNull;
+use App\Biz\Test\Version;
 use PhpParser\NodeTraverser;
 use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard;
@@ -56,5 +58,12 @@ class ClassTest extends AbstractTestCase
         $cls = new $class();
 
         $this->assertEquals('', $cls->getStr());
+    }
+
+    public function testPrivateExtends()
+    {
+        $v = new Version();
+
+        $this->assertEquals('1.0.0', $v->getVersion());
     }
 }
