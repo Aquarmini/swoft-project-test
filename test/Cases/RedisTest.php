@@ -37,6 +37,7 @@ class RedisTest extends AbstractTestCase
         $redis->select(1);
         $redis->delete('swoft:string');
         $redis->set('swoft:string', 'xxx');
+        $redis->select(0);
 
         $redis2 = bean(OtherRedis::class);
         $this->assertEquals('xxx', $redis2->get('swoft:string'));
