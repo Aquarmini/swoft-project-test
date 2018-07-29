@@ -17,6 +17,7 @@ use Swoft\Core\ResultInterface;
  * Class DemoServiceFallback
  * @Fallback("demoFallback")
  * @method ResultInterface deferVersion
+ * @method ResultInterface deferBigMessage($str)
  * @package App\Fallback
  */
 class DemoServiceFallback implements DemoServiceInterface
@@ -24,5 +25,10 @@ class DemoServiceFallback implements DemoServiceInterface
     public function version()
     {
         return '1.0.0.fallback';
+    }
+
+    public function bigMessage($str)
+    {
+        return 'bigMessageFallBack';
     }
 }

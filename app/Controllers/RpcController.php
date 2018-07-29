@@ -76,4 +76,18 @@ class RpcController extends BaseController
         $user = $this->userDao->findById($id);
         return $this->response->success($user);
     }
+
+    /**
+     * @RequestMapping(route="big-message", method=RequestMethod::GET)
+     * @author limx
+     */
+    public function bigMessage()
+    {
+        $input = '';
+        for ($i = 0; $i < 5; $i++) {
+            $input .= 'Hi,Agnes! ';
+        }
+        $data = $this->demoService->bigMessage($input);
+        return $this->response->success($data);
+    }
 }
