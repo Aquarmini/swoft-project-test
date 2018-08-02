@@ -35,7 +35,7 @@ class DemoAspect
      */
     public function before()
     {
-        var_dump(' before1 ');
+        // var_dump(' before1 ');
     }
 
     /**
@@ -43,7 +43,7 @@ class DemoAspect
      */
     public function after()
     {
-        var_dump(' after1 ');
+        // var_dump(' after1 ');
     }
 
     /**
@@ -52,7 +52,7 @@ class DemoAspect
     public function afterReturn(JoinPoint $joinPoint)
     {
         $result = $joinPoint->getReturn();
-        var_dump($result);
+        // var_dump($result);
         return $result . '@beta';
     }
 
@@ -63,12 +63,12 @@ class DemoAspect
      */
     public function around(ProceedingJoinPoint $proceedingJoinPoint)
     {
-        var_dump(' around-before1 ');
+        // var_dump(' around-before1 ');
         $target = $proceedingJoinPoint->getTarget();
-        var_dump($target);
+        // var_dump($target);
         $target->version = '2.0.0';
         $result = $proceedingJoinPoint->proceed();
-        var_dump(' around-after1 ');
+        // var_dump(' around-after1 ');
         return $result;
     }
 

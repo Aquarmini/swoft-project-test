@@ -10,6 +10,7 @@
 
 namespace App\Controllers;
 
+use App\Biz\Test\DemoClient;
 use App\Lib\Demo2ServiceInterface;
 use App\Lib\DemoServiceInterface;
 use App\Models\Dao\UserDao;
@@ -89,5 +90,15 @@ class RpcController extends BaseController
         }
         $data = $this->demoService->bigMessage($input);
         return $this->response->success($data);
+    }
+
+    /**
+     * @RequestMapping(route="bean-rpc", method=RequestMethod::GET)
+     * @return \Swoft\Http\Message\Server\Response
+     */
+    public function beanRpc()
+    {
+        $bean = bean(DemoClient::class);
+        return $this->response->success($bean->version());
     }
 }
