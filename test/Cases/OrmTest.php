@@ -15,8 +15,12 @@
 // +----------------------------------------------------------------------
 namespace Swoft\Test\Cases;
 
+use App\Models\Entity\Book;
 use App\Models\Entity\EventUser;
 use App\Models\Entity\User;
+use Swoft\Db\Db;
+use Swoft\Db\Query;
+use Swoft\Db\QueryBuilder;
 use Swoft\Redis\Redis;
 use Swoft\Test\AbstractTestCase;
 use Swoftx\Db\Entity\Manager\ModelCacheManager;
@@ -55,5 +59,24 @@ class OrmTest extends AbstractTestCase
         $user = User::findOneByCache(1);
         $redis = bean(Redis::class);
         $this->assertEquals(1, $redis->exists(ModelCacheManager::getCacheKey(1, User::class)));
+    }
+
+    public function testLeftJoin()
+    {
+        $result = User::query()->leftJoin(Book::class, 'book.uid = user.id')
+            ->where('user.id', 2)
+            ->one(['user.*', 'book.name as book_name'])->getResult();
+
+        $this->assertInstanceOf(User::class, $result);
+    }
+
+    public function testQueryBuilder()
+    {
+        $res = Query::table(User::class)->leftJoin(Book::class, 'book.uid = user.id')
+            ->where('user.id', 2)
+            ->one(['user.*', 'book.name as book_name'])->getResult();
+
+        $this->assertEquals('Agnes', $res['name']);
+        $this->assertEquals('时装精选', $res['book_name']);
     }
 }
