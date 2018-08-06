@@ -36,4 +36,52 @@ class QueueCommand
         $queue->run();
         return 0;
     }
+
+    /**
+     * 重载失败的消息到队列
+     * @Usage {command}
+     * @Example {command}
+     * @author limx
+     * @return int
+     */
+    public function reload(Output $output): int
+    {
+        $queue = Queue::instance();
+        $count = $queue->reloadErrorJobs();
+        $output->colored("已将{$count}条消息，重载到消费队列");
+        return 0;
+    }
+
+    /**
+     * 删除所有失败的消息
+     * @Usage {command}
+     * @Example {command}
+     * @author limx
+     * @return int
+     */
+    public function flush(Output $output): int
+    {
+        $queue = Queue::instance();
+        $count = $queue->flushErrorJobs();
+        $output->colored("已删除所有失败的消息，共{$count}条");
+        return 0;
+    }
+
+    /**
+     * 查看当前消息的数量
+     * @author limx
+     * @param Output $output
+     * @return int
+     */
+    public function count(Output $output): int
+    {
+        $queue = Queue::instance();
+        $count = $queue->countCurrentJobs();
+        $output->colored("当前消息数量，共{$count}条");
+
+        $count = $queue->countErrorJobs();
+        $output->colored("失败消息数量，共{$count}条");
+        return 0;
+    }
+
 }
