@@ -79,4 +79,15 @@ class OrmTest extends AbstractTestCase
         $this->assertEquals('Agnes', $res['name']);
         $this->assertEquals('时装精选', $res['book_name']);
     }
+
+    public function testCountAndResult()
+    {
+        $query = Query::table(User::class)->where('id', 1, QueryBuilder::OPERATOR_GT);
+        $countQuery = clone $query;
+
+        $count = $query->count()->getResult();
+        $res = $countQuery->get()->getResult();
+
+        $this->assertEquals($count, count($res));
+    }
 }
