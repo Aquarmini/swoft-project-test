@@ -63,4 +63,19 @@ return [
         'class' => \Monolog\Formatter\LineFormatter::class,
         'allowInlineLineBreaks' => true,
     ],
+    'testLogger' => [
+        'name' => APP_NAME,
+        'class' => \Swoft\Log\Logger::class,
+        'enable' => env('LOG_ENABLE', true),
+        'flushInterval' => 100,
+        'flushRequest' => true,
+        'handlers' => [
+            '${testLoggerHandler}',
+        ],
+    ],
+    'testLoggerHandler' => [
+        'class' => \Swoft\Log\FileHandler::class,
+        'logFile' => '@runtime/logs/test.log',
+        'formatter' => '${lineFormatter}',
+    ],
 ];
