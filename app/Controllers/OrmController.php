@@ -12,6 +12,7 @@ namespace App\Controllers;
 
 use App\Models\Dao\UserDao;
 use App\Models\Entity\User;
+use Swoft\Db\Db;
 use Swoft\Http\Server\Bean\Annotation\Controller;
 use Swoft\Http\Server\Bean\Annotation\RequestMapping;
 use Swoft\Http\Server\Bean\Annotation\RequestMethod;
@@ -69,6 +70,16 @@ class OrmController extends BaseController
         }
 
         $res = $user->update()->getResult();
+        return $this->response->success($res);
+    }
+
+    /**
+     * 错误的SQL查询
+     * @RequestMapping(route="error/sql", method=RequestMethod::GET)
+     */
+    public function errorSql()
+    {
+        $res = Db::query('SELECT *,idd FROM `user` WHERE id = 1')->getResult();
         return $this->response->success($res);
     }
 }
