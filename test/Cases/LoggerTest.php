@@ -21,8 +21,11 @@ class LoggerTest extends AbstractTestCase
     public function testCustomLogger()
     {
         $file = alias('@runtime/logs/test.log');
-        $text = file_get_contents($file);
-        $count = count(explode("\n", $text));
+        $count = 1;
+        if (file_exists($file)) {
+            $text = file_get_contents($file);
+            $count = count(explode("\n", $text));
+        }
 
         /** @var Logger $logger */
         $logger = bean('testLogger');
