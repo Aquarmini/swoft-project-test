@@ -82,4 +82,14 @@ class OrmController extends BaseController
         $res = Db::query('SELECT *,idd FROM `user` WHERE id = 1')->getResult();
         return $this->response->success($res);
     }
+
+    /**
+     * 正确的SQL查询
+     * @RequestMapping(route="sql", method=RequestMethod::GET)
+     */
+    public function sql()
+    {
+        $res = Db::query('SELECT * FROM `user` WHERE id = 1')->getResult();
+        return $this->response->success($res);
+    }
 }
