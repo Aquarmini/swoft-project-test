@@ -62,11 +62,5 @@
             "@php bin/swoft app:init"
         ],
         "test": "./vendor/bin/phpunit -c phpunit.xml"
-    },
-    "repositories": {
-        "swoft-db-model": {
-            "type": "git",
-            "url": "https://github.com/limingxinleo/swoft-db-model.git"
-        }
     }
 }
