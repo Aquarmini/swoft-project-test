@@ -101,4 +101,13 @@ class RpcController extends BaseController
         $bean = bean(DemoClient::class);
         return $this->response->success($bean->version());
     }
+
+    /**
+     * @RequestMapping(route="get/{id}", method=RequestMethod::GET)
+     * @author limx
+     */
+    public function get($id)
+    {
+        return $this->response->success($this->demoService->get($id));
+    }
 }

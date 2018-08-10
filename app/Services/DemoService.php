@@ -18,6 +18,7 @@ use Swoft\Core\ResultInterface;
  * @Service()
  * @method ResultInterface deferVersion()
  * @method ResultInterface deferBigMessage($str)
+ * @method ResultInterface deferGet($id)
  * @package App\Services
  */
 class DemoService implements DemoServiceInterface
@@ -34,5 +35,11 @@ class DemoService implements DemoServiceInterface
             $res .= $str;
         }
         return $res;
+    }
+
+    public function get($id)
+    {
+        sleep(2);
+        return $id;
     }
 }

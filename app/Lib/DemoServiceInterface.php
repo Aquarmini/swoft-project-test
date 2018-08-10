@@ -16,10 +16,13 @@ use Swoft\Core\ResultInterface;
  * @package App\Lib
  * @method ResultInterface deferVersion()
  * @method ResultInterface deferBigMessage($str)
+ * @method ResultInterface deferGet($id)
  */
 interface DemoServiceInterface
 {
     public function version();
 
     public function bigMessage($str);
+
+    public function get($id);
 }

@@ -20,7 +20,7 @@ return [
         'maxWait' => 8,
         'maxWaitTime' => 3,
         'maxIdleTime' => 60,
-        'timeout' => 8,
+        'timeout' => 1,
         'useProvider' => false,
         'balancer' => 'random',
         'provider' => 'consul',
