@@ -4,12 +4,11 @@
  *
  * @link     https://swoft.org
  * @document https://doc.swoft.org
- * @contact  group@swoft.org
+ * @contact  limingxin@swoft.org
  * @license  https://github.com/swoft-cloud/swoft/blob/master/LICENSE
  */
 namespace App\Models\Entity;
 
-use App\Models\Model;
 use Swoft\Db\Bean\Annotation\Column;
 use Swoft\Db\Bean\Annotation\Entity;
 use Swoft\Db\Bean\Annotation\Id;
@@ -18,11 +17,12 @@ use Swoft\Db\Bean\Annotation\Table;
 
 /**
  * 用户表
+
  * @Entity()
  * @Table(name="user")
  * @uses      User
  */
-class User extends Model
+class User extends \App\Models\Model
 {
     /**
      * @var int $id

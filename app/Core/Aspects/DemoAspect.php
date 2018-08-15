@@ -1,11 +1,18 @@
 <?php
+/**
+ * This file is part of Swoft.
+ *
+ * @link     https://swoft.org
+ * @document https://doc.swoft.org
+ * @contact  limingxin@swoft.org
+ * @license  https://github.com/swoft-cloud/swoft/blob/master/LICENSE
+ */
 namespace App\Core\Aspects;
 
 use Swoft\Aop\JoinPoint;
 use Swoft\Aop\ProceedingJoinPoint;
 use Swoft\Bean\Annotation\PointAnnotation;
 use Swoft\Bean\Annotation\Cacheable;
-use SwoftTest\Aop\RegBean;
 use Swoft\Bean\Annotation\Before;
 use Swoft\Bean\Annotation\After;
 use Swoft\Bean\Annotation\AfterReturning;

@@ -4,7 +4,7 @@
  *
  * @link     https://swoft.org
  * @document https://doc.swoft.org
- * @contact  group@swoft.org
+ * @contact  limingxin@swoft.org
  * @license  https://github.com/swoft-cloud/swoft/blob/master/LICENSE
  */
 namespace Swoft\Test\Cases;
@@ -12,7 +12,6 @@ namespace Swoft\Test\Cases;
 use App\Models\Entity\Book;
 use App\Models\Entity\EventUser;
 use App\Models\Entity\User;
-use Swoft\Db\Db;
 use Swoft\Db\Query;
 use Swoft\Db\QueryBuilder;
 use Swoft\Redis\Redis;

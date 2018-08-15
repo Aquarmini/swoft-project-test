@@ -4,15 +4,11 @@
  *
  * @link     https://swoft.org
  * @document https://doc.swoft.org
- * @contact  group@swoft.org
+ * @contact  limingxin@swoft.org
  * @license  https://github.com/swoft-cloud/swoft/blob/master/LICENSE
  */
 namespace Swoft\Test\Cases;
 
-use App\Models\Entity\EventUser;
-use App\Models\Entity\User;
-use Swoft\Db\Pool\DbPool;
-use Swoft\Db\Pool\DbSlavePool;
 use Swoft\Log\Logger;
 use Swoft\Test\AbstractTestCase;
 

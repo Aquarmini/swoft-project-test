@@ -4,12 +4,11 @@
  *
  * @link     https://swoft.org
  * @document https://doc.swoft.org
- * @contact  group@swoft.org
+ * @contact  limingxin@swoft.org
  * @license  https://github.com/swoft-cloud/swoft/blob/master/LICENSE
  */
 namespace Swoft\Test\Cases;
 
-use App\Lib\DemoServiceInterface;
 use App\Pool\Config\DemoServicePoolConfig;
 use Swoft\Rpc\Client\Exception\RpcClientException;
 use Swoft\Test\AbstractTestCase;
