@@ -83,4 +83,13 @@ class OrmTest extends AbstractTestCase
 
         $this->assertEquals($count, count($res));
     }
+
+    public function testModelEntityCache()
+    {
+        $user = User::findOneByCache(1);
+        $this->assertNotNull($user);
+
+        $redis = bean(Redis::class);
+        $this->assertTrue($redis->has('entity:cache:spt:i:default:t:user:id:1'));
+    }
 }

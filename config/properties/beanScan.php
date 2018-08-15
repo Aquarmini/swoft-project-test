@@ -28,7 +28,6 @@ $customBean = [
     'App\\Biz',
     'App\\Config',
     'App\\Jobs',
-    'Swoftx\\Db\\Entity\\',
 ];
 
 $beanScan = array_merge($beanScan, $customBean);
