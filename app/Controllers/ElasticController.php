@@ -42,4 +42,24 @@ class ElasticController extends BaseController
         $info = JsonHelper::decode($string, true);
         return $this->response->success($info);
     }
+
+    /**
+     * @RequestMapping(route="index", method=RequestMethod::GET)
+     */
+    public function index()
+    {
+        // $client = bean(Client::class)->getClient();
+        // $info = $client->indices()->get([
+        //     'index' => 'es:index'
+        // ]);
+
+        $client = new \Swoft\HttpClient\Client([
+            'base_uri' => 'http://127.0.0.1:9200/',
+        ]);
+        $string = $client->get('/es:index')->getResult();
+
+        $info = JsonHelper::decode($string, true);
+
+        return $this->response->success($info);
+    }
 }
