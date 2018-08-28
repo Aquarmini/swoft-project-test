@@ -92,4 +92,11 @@ class OrmTest extends AbstractTestCase
         $redis = bean(Redis::class);
         $this->assertTrue($redis->has('entity:cache:spt:i:default:t:user:id:1'));
     }
+
+    public function testSqlWhereIn()
+    {
+        $res = Query::table(User::class)->whereIn('id', [1, 2])->get()->getResult();
+        $ids = array_column($res, 'id');
+        $this->assertEquals([1, 2], $ids);
+    }
 }
