@@ -10,6 +10,7 @@
 namespace App\Breaker;
 
 use Swoft\Sg\Bean\Annotation\Breaker;
+use Swoftx\Rpc\Breaker\ServiceBreaker;
 
 /**
  * Class DemoServiceBreaker
