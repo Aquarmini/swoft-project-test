@@ -46,9 +46,8 @@ class TestTask
 
     /**
      * A cronTab task
-     * 3-5 seconds per minute 每分钟第3-5秒执行
      *
-     * @Scheduled(cron="3-5 * * * * *")
+     * @Scheduled(cron="* * * * * *")
      */
     public function cronTask()
     {
