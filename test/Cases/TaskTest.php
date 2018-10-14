@@ -11,6 +11,7 @@ namespace Swoft\Test\Cases;
 
 use App\Core\Queue\Queue;
 use App\Jobs\TestJob;
+use App\Jobs\ThrowJob;
 use App\Models\Entity\User;
 use Swoft\Redis\Redis;
 use Swoft\Task\Task;
@@ -48,5 +49,12 @@ class TaskTest extends AbstractTestCase
         sleep(2);
         $user = User::findById($id)->getResult();
         $this->assertNull($user);
+    }
+
+    public function testQueueThrowException()
+    {
+        $res = Queue::instance()->push(new ThrowJob(1));
+
+        $this->assertTrue($res == 1);
     }
 }
