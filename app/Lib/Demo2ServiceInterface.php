@@ -15,8 +15,11 @@ use Swoft\Core\ResultInterface;
  * Interface DemoServiceInterface
  * @package App\Lib
  * @method ResultInterface deferVersion()
+ * @method ResultInterface deferThrowException()
  */
 interface Demo2ServiceInterface
 {
     public function version();
+
+    public function throwException();
 }

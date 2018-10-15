@@ -17,6 +17,7 @@ use Swoft\Core\ResultInterface;
  * Class DemoServiceFallback
  * @Fallback("demo2Fallback")
  * @method ResultInterface deferVersion
+ * @method ResultInterface deferThrowException()
  * @package App\Fallback
  */
 class Demo2ServiceFallback implements Demo2ServiceInterface
@@ -24,5 +25,10 @@ class Demo2ServiceFallback implements Demo2ServiceInterface
     public function version()
     {
         return '2.0.0.fallback';
+    }
+
+    public function throwException()
+    {
+        return 'fallback';
     }
 }

@@ -63,4 +63,12 @@ class RpcTest extends AbstractTestCase
 
         $this->assertEquals(['data' => '1.0.0', 'status' => 200, 'msg' => ''], $res);
     }
+
+    public function testRpcThrowException()
+    {
+        $res = $this->json('GET', '/rpc/throw-exception');
+        $res = json_decode($res->getBody()->getContents(), true);
+
+        $this->assertEquals('1000', $res['code']);
+    }
 }

@@ -37,7 +37,7 @@ class RpcController extends BaseController
     private $demoService;
 
     /**
-     * @Reference(name="demo", fallback="demo2Fallback")
+     * @Reference(name="demo")
      * @var Demo2ServiceInterface
      */
     private $demo2Service;
@@ -109,5 +109,16 @@ class RpcController extends BaseController
     public function get($id)
     {
         return $this->response->success($this->demoService->get($id));
+    }
+
+    /**
+     * @RequestMapping(route="throw-exception", method=RequestMethod::GET)
+     * @author limx
+     */
+    public function throwException()
+    {
+        $res = $this->demo2Service->throwException();
+
+        return $this->response->success($res);
     }
 }
