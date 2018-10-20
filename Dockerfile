@@ -1,74 +1,34 @@
-FROM php:7.1
+# @description php 7.1 image base on the alpine 3.7 镜像更小，构建完成只有46M
+#                       some information
+# ------------------------------------------------------------------------------------
+# @link https://hub.docker.com/_/alpine/      alpine image
+# @link https://hub.docker.com/_/php/         php image
+# @link https://github.com/docker-library/php php dockerfiles
+# ------------------------------------------------------------------------------------
+# @build-example docker build . -f Dockerfile -t swoft/swoft-project:v1.0
+# @run-example docker run --rm -d -p 8080:8080 --name swoft-project swoft/swoft-project:1.0
+# @run-example docker run --rm -d -p 8080:8080 --name swoft-project --env-file .env registry.cn-shanghai.aliyuncs.com/limingxinleo/swoft-project:latest
+#
 
-MAINTAINER huangzhhui <h@swoft.org>
+FROM swoft/alphp:cli
+LABEL maintainer="limx <limingxin@swoft.org>" version="1.0"
 
-# Timezone
-RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-    && echo 'Asia/Shanghai' > /etc/timezone
+# 安装其他依赖
+RUN apk add git php7-xml php7-pcntl
 
-# Libs
-RUN apt-get update \
-    && apt-get install -y \
-        curl \
-        wget \
-        git \
-        zip \
-        libz-dev \
-        libssl-dev \
-        libnghttp2-dev \
-        libpcre3-dev \
-    && apt-get clean \
-    && apt-get autoremove
-
+# 安装composer
 RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
     && composer self-update --clean-backups
 
-# Redis extension
-RUN pecl install redis && docker-php-ext-enable redis && pecl clear-cache
+COPY . /opt/www/swoft
 
-# PDO extension
-RUN docker-php-ext-install pdo_mysql
-
-# Bcmath extension
-RUN docker-php-ext-install bcmath
-
-# Hiredis
-RUN wget https://github.com/redis/hiredis/archive/v0.13.3.tar.gz -O hiredis.tar.gz \
-    && mkdir -p hiredis \
-    && tar -xf hiredis.tar.gz -C hiredis --strip-components=1 \
-    && rm hiredis.tar.gz \
-    && ( \
-        cd hiredis \
-        && make -j$(nproc) \
-        && make install \
-        && ldconfig \
-    ) \
-    && rm -r hiredis
-
-# Swoole extension
-RUN wget https://github.com/swoole/swoole-src/archive/v4.0.1.tar.gz -O swoole.tar.gz \
-    && mkdir -p swoole \
-    && tar -xf swoole.tar.gz -C swoole --strip-components=1 \
-    && rm swoole.tar.gz \
-    && ( \
-        cd swoole \
-        && phpize \
-        && ./configure --enable-async-redis --enable-mysqlnd --enable-openssl --enable-http2 \
-        && make -j$(nproc) \
-        && make install \
-    ) \
-    && rm -r swoole \
-    && docker-php-ext-enable swoole
-
-ADD . /var/www/swoft
-
-WORKDIR /var/www/swoft
+WORKDIR /opt/www/swoft
 
 RUN composer install --no-dev \
     && composer dump-autoload -o \
-    && composer clearcache
+    && php /opt/www/swoft/bin/swoft app:init
 
 EXPOSE 8080
 
-CMD ["php", "/var/www/swoft/bin/swoft", "start"]
+ENTRYPOINT ["php", "/opt/www/swoft/bin/swoft", "start"]
