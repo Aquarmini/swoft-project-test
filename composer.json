@@ -40,7 +40,8 @@
         "elasticsearch/elasticsearch": "^6.0",
         "topthink/think-validate": "^1.0",
         "limingxinleo/swoft-entity-cache": "^1.2",
-        "limingxinleo/swoft-rpc": "^1.0"
+        "limingxinleo/swoft-rpc": "^1.0",
+        "hiqdev/composer-config-plugin": "^0.2.5"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "dev-master",
@@ -65,5 +66,10 @@
             "@php bin/swoft app:init"
         ],
         "test": "./vendor/bin/phpunit -c phpunit.xml"
+    },
+    "extra": {
+        "config-plugin": {
+            "swoft.components": []
+        }
     }
 }
