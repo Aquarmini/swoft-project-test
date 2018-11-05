@@ -33,7 +33,7 @@
         "swoft/service-governance": "~1.0",
         "limingxinleo/swoft-trait-instance": "^1.0",
         "limingxinleo/swoft-db-model": "^1.0",
-        "limingxinleo/x-phalcon-enum": "^1.1",
+        "limingxinleo/swoft-constants": "^1.0",
         "limingxinleo/x-swoole-queue": "^1.2",
         "limingxinleo/swoft-aop-cacheable": "^1.1",
         "nikic/php-parser": "^4.0",
