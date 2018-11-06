@@ -31,6 +31,6 @@ class Demo2Service implements Demo2ServiceInterface
 
     public function throwException()
     {
-        throw new HttpServerException(ErrorCode::$ENUM_PARAMS_ERROR, '自定义错误');
+        throw new HttpServerException(ErrorCode::PARAMS_ERROR, '自定义错误');
     }
 }
