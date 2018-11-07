@@ -11,6 +11,7 @@
 namespace Swoft\Test;
 
 use PHPUnit\Framework\TestCase;
+use Swoft\Helper\JsonHelper;
 use Swoft\HttpClient\Client;
 
 /**
@@ -32,8 +33,18 @@ class HttpTestCase extends TestCase
         ]);
     }
 
-    public function request($method, $uri, $data = [])
+    public function post($uri, $data = [])
     {
-        return $this->client->$method($uri, $data)->getResponse();
+        $res = $this->client->post($uri, [
+            'body' => http_build_query($data)
+        ])->getResult();
+
+        return JsonHelper::decode($res, true);
+    }
+
+    public function get($uri, $data = [])
+    {
+        $res = $this->client->get($uri)->getResult();
+        return JsonHelper::decode($res, true);
     }
 }

@@ -12,15 +12,15 @@ namespace Swoft\Test\Cases;
 
 use App\Core\Redis\OtherRedis;
 use Swoft\Redis\Redis;
-use Swoft\Test\AbstractTestCase;
+use Swoft\Test\HttpTestCase;
 
-class RedisTest extends AbstractTestCase
+class RedisTest extends HttpTestCase
 {
     public function testRedisSet()
     {
         /** @var Redis $redis */
         $redis = bean(Redis::class);
-        $res   = $redis->set('swoft:string', 'xxx', 600);
+        $res = $redis->set('swoft:string', 'xxx', 600);
         $this->assertTrue($res);
 
         $res = $redis->get('swoft:string');
