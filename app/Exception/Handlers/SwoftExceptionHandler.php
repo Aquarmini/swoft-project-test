@@ -17,7 +17,7 @@ use Swoft\Helper\JsonHelper;
 use Swoft\Http\Message\Server\Request;
 use Swoft\Http\Message\Server\Response;
 use Swoft\Bean\Annotation\Inject;
-use Swoft\Bean\Annotation\ExceptionHandler;
+use Swoft\ErrorHandler\Bean\Annotation\ExceptionHandler;
 use Exception;
 use Swoft\Exception\RuntimeException;
 use Swoft\Exception\BadMethodCallException;

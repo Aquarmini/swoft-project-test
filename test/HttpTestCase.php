@@ -31,4 +31,9 @@ class HttpTestCase extends TestCase
             'adapter' => 'curl',
         ]);
     }
+
+    public function request($method, $uri, $data = [])
+    {
+        return $this->client->$method($uri, $data)->getResponse();
+    }
 }

@@ -117,7 +117,11 @@ class RpcController extends BaseController
      */
     public function throwException()
     {
-        $res = $this->demo2Service->throwException();
+        try {
+            $res = $this->demo2Service->throwException();
+        } catch (\Throwable $ex) {
+            throw $ex;
+        }
 
         return $this->response->success($res);
     }
