@@ -14,8 +14,20 @@ use Swoft\Http\Server\ServerDispatcher;
 
 class Dispatcher extends ServerDispatcher
 {
+    private $middlewares = [];
+
     protected function afterDispatch($response)
     {
         parent::afterDispatch($response);
+    }
+
+    /**
+     * The middleware of request
+     *
+     * @return array
+     */
+    public function requestMiddleware(): array
+    {
+        return \array_merge($this->preMiddleware(), $this->middlewares, $this->afterMiddleware());
     }
 }

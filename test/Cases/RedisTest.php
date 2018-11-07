@@ -42,4 +42,11 @@ class RedisTest extends HttpTestCase
         $redis2 = bean(OtherRedis::class);
         $this->assertEquals('xxx', $redis2->get('swoft:string'));
     }
+
+    public function testSession()
+    {
+        $res = $this->get('/session/index');
+
+        $this->assertEquals($res['data'][0], $res['data'][1]);
+    }
 }
