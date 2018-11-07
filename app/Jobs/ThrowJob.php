@@ -9,7 +9,6 @@
  */
 namespace App\Jobs;
 
-use App\Models\Entity\User;
 use Xin\Swoole\Queue\JobInterface;
 
 class ThrowJob implements JobInterface
