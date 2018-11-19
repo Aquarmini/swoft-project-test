@@ -38,4 +38,6 @@ before_script:
   - bin/swoft start -d
   - sleep 10
 
-script: vendor/bin/phpunit
+script:
+  - ./vendor/bin/phpstan analyse app
+  - ./vendor/bin/phpunit
