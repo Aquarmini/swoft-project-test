@@ -48,6 +48,11 @@ class ProxyVisitor extends NodeVisitorAbstract
         return '\\' . $this->className . '_' . $this->proxyId;
     }
 
+    public function getParentClassFullName()
+    {
+        return '\\' . $this->className;
+    }
+
     /**
      * Called when leaving a node.
      * Return value semantics:
