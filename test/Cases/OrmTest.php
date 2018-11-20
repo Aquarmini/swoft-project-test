@@ -36,11 +36,19 @@ class OrmTest extends AbstractTestCase
         $id = $user->save()->getResult();
         $this->assertTrue($id > 0);
 
+        $user->updateModel();
+
+        $redis = bean(Redis::class);
+        $this->assertEquals($user->getId(), $redis->get('user_event:user_id:' . $user->getId()));
+
         sleep(1);
 
+        $date = date('Y-m-d H:i:s');
+        /** @var EventUser $user */
         $user = EventUser::findById($id)->getResult();
         $res = $user->update()->getResult();
         $this->assertNotNull($user->getUpdatedAt());
+        $this->assertEquals($date, $user->getUpdatedAt());
         $this->assertEquals(1, $res);
 
         $res = $user->delete()->getResult();
