@@ -17,7 +17,7 @@ LABEL maintainer="limx <limingxin@swoft.org>" version="1.0"
 # ---------- env settings ----------
 ##
 ENV HIREDIS_VERSION=0.13.3 \
-    SWOOLE_VERSION=4.2.7 \
+    SWOOLE_VERSION=4.2.8 \
     CPHALCON_VERSION=3.4.1 \
     DOCKER_ENVIRONMENT=true \
     #  install and remove building packages
@@ -34,7 +34,7 @@ RUN set -ex \
         && ls -alh \
         && apk update \
         # for swoole extension libaio linux-headers
-        && apk add --no-cache libstdc++ openssl php7-xml php7-xmlreader php7-xmlwriter php7-pcntl php7-gd git bash \
+        && apk add --no-cache libstdc++ openssl php7-xml php7-xmlreader php7-xmlwriter php7-pcntl git bash \
         && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS libaio-dev openssl-dev \
         # php extension: phalcon
         && cd /tmp \
