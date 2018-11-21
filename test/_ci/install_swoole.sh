@@ -5,6 +5,6 @@ tar -xf swoole.tar.gz -C swoole --strip-components=1
 rm swoole.tar.gz
 cd swoole
 phpize
-./configure --enable-mysqlnd --enable-openssl
+./configure --enable-openssl
 make -j$(nproc)
 make install
