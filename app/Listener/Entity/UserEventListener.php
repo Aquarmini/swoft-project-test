@@ -41,4 +41,14 @@ class UserEventListener implements EventInterface
         $redis->set('user_event:user_id:' . $model->getId(), $model->getId());
         return $model;
     }
+
+    public function beforeDelete(Model $model): Model
+    {
+        return $model;
+    }
+
+    public function afterDelete(Model $model): Model
+    {
+        return $model;
+    }
 }
