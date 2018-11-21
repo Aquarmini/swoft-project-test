@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
-
-CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-TRAVIS_BUILD_DIR="${TRAVIS_BUILD_DIR:-$(dirname $(dirname $CURRENT_DIR))}"
-
-wget https://github.com/swoole/swoole-src/archive/v4.0.1.zip
-unzip v4.0.1.zip
-cd swoole-src-4.0.1
+wget https://github.com/swoole/swoole-src/archive/v4.2.5.tar.gz -O swoole.tar.gz
+mkdir -p swoole
+tar -xf swoole.tar.gz -C swoole --strip-components=1
+rm swoole.tar.gz
+cd swoole
 phpize
-./configure --enable-async-redis
-make && make install
+./configure --enable-mysqlnd --enable-openssl
+make -j$(nproc)
+make install
