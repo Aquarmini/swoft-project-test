@@ -40,15 +40,13 @@ class TaskTest extends AbstractTestCase
 
     public function testQueue()
     {
-        $user = new User();
-        $user->setName('xxx' . rand(0, 9999));
-        $user->setRoleId(1);
-        $id = $user->save()->getResult();
+        $id = uniqid();
         Queue::instance()->push(new TestJob($id));
 
-        sleep(2);
-        $user = User::findById($id)->getResult();
-        $this->assertNull($user);
+        sleep(1);
+
+        $file = alias('@runtime/' . $id);
+        $this->assertEquals($id, file_get_contents($file));
     }
 
     public function testQueueThrowException()

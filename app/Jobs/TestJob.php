@@ -23,8 +23,7 @@ class TestJob implements JobInterface
 
     public function handle()
     {
-        /** @var User $user */
-        $user = User::findById($this->id)->getResult();
-        return $user->delete()->getResult();
+        $file = alias('@runtime/' . $this->id);
+        return file_put_contents($file, $this->id);
     }
 }
