@@ -10,6 +10,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Service\AmqpDemoPublisher;
 use App\Services\Test;
 use App\Services\TestCo;
 use Swoft\Http\Server\Bean\Annotation\Controller;
@@ -49,5 +50,16 @@ class CoController extends BaseController
         TestCo::instance()->incr();
         \co::sleep(1);
         return $this->response->success(TestCo::instance()->get());
+    }
+
+    /**
+     * @author limx
+     * @RequestMapping(route="amqp/{id}", method=RequestMethod::GET)
+     */
+    public function amqp($id)
+    {
+        AmqpDemoPublisher::make()->setData(['id' => $id])->publish();
+
+        return $this->response->success();
     }
 }

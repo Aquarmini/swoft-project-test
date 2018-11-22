@@ -1,5 +1,7 @@
 language: php
 
+sudo: true
+
 php:
   - 7.1
   - 7.2
@@ -14,6 +16,7 @@ git:
 
 services:
   - redis-server
+  - docker
 
 before_install:
   - export PHP_MAJOR="$(`phpenv which php` -r 'echo phpversion();' | cut -d '.' -f 1)"
@@ -23,7 +26,7 @@ before_install:
 
 install:
   - cd $TRAVIS_BUILD_DIR
-  - git checkout test
+  - docker run -d --restart=always --name rabbitmq -p 4369:4369 -p 5673:5672 -p 15672:15672 -p 25672:25672 rabbitmq:management-alpine
   - bash test/_ci/install_swoole.sh
   - phpenv config-rm xdebug.ini
   - phpenv config-add test/_ci/ci.ini
