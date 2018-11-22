@@ -25,6 +25,6 @@ class TestJob implements JobInterface
     {
         /** @var User $user */
         $user = User::findById($this->id)->getResult();
-        return $user->delete();
+        return $user->delete()->getResult();
     }
 }
