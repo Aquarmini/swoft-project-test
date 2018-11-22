@@ -43,7 +43,7 @@ class TaskTest extends AbstractTestCase
         $user = new User();
         $user->setName('xxx' . rand(0, 9999));
         $user->setRoleId(1);
-        $id = $user->save()->getResult();
+        $id = $user->saveModel();
         Queue::instance()->push(new TestJob($id));
 
         sleep(2);
