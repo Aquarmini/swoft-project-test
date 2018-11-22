@@ -3,14 +3,14 @@
 
 namespace App\Core;
 
-use Swoftx\Amqplib\Config;
+use Swoftx\Amqplib\ConfigInterface;
 use Swoft\Bean\Annotation\Bean;
 use Swoft\Bean\Annotation\Value;
 
 /**
  * @Bean
  */
-class AmqpConfig extends Config
+class AmqpConfig implements ConfigInterface
 {
     /**
      * @Value(env="${AMQP_HOST}")
@@ -37,7 +37,43 @@ class AmqpConfig extends Config
      */
     protected $vhost;
 
-    public function __construct($host = '127.0.0.1', $port = 5672, $user = 'guest', $password = 'guest', $vhost = '/')
+    /**
+     * @return mixed
+     */
+    public function getHost(): string
     {
+        return $this->host;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPort(): int
+    {
+        return $this->port;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser(): string
+    {
+        return $this->user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVhost(): string
+    {
+        return $this->vhost;
     }
 }
