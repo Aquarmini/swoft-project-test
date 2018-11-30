@@ -3,6 +3,7 @@
 
 namespace App\Core;
 
+use Swoftx\Amqplib\Adapters\StreamAdapter;
 use Swoftx\Amqplib\Connection;
 use Swoft\Bean\Annotation\Bean;
 use Swoft\Bean\Annotation\Inject;
@@ -17,4 +18,10 @@ class AmqpConnection extends Connection
      * @var AmqpConfig
      */
     protected $config;
+
+    /**
+     * @Inject
+     * @var AmqpParams
+     */
+    protected $params;
 }

@@ -4,6 +4,7 @@
 namespace App\Models\Service;
 
 use App\Core\AmqpConnection;
+use Swoft\Redis\Redis;
 use Swoftx\Amqplib\Connection;
 use Swoftx\Amqplib\Message\Consumer;
 use Swoftx\Amqplib\Message\Publisher;
@@ -25,6 +26,8 @@ class AmqpDemoConsumer extends Consumer
     {
         $file = alias('@runtime/' . $data['id']);
         file_put_contents($file, $data['id']);
+        $redis = bean(Redis::class);
+        echo $redis->incr('amqp:consumer') . PHP_EOL;
         return true;
     }
 }

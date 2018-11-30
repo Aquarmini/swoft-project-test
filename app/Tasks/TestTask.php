@@ -51,8 +51,6 @@ class TestTask
      */
     public function cronTask()
     {
-        echo time() . "第3-5秒执行\n";
-
         return 'cron';
     }
 }
