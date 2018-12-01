@@ -4,8 +4,11 @@
 namespace App\Models\Service;
 
 use App\Core\AmqpConnection;
+use Swoft\App;
+use Swoft\Pool\ConnectionInterface;
 use Swoftx\Amqplib\Connection;
 use Swoftx\Amqplib\Message\Publisher;
+use Swoftx\Amqplib\Pool\RabbitMQPool;
 
 class AmqpDemoPublisher extends Publisher
 {
@@ -13,8 +16,20 @@ class AmqpDemoPublisher extends Publisher
 
     protected $routingKey = 'test';
 
+    /** @var ConnectionInterface */
+    protected $swoftConnection;
+
     protected function getConnection(): Connection
     {
-        return bean(AmqpConnection::class)->build();
+        $pool = App::getPool(RabbitMQPool::class);
+        $this->swoftConnection = $pool->getConnection();
+        /** @var AmqpConnection $conn */
+        return $this->swoftConnection->getConnection();
+    }
+
+    public function publish()
+    {
+        parent::publish();
+        $this->swoftConnection->release(true);
     }
 }
