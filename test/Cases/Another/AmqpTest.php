@@ -11,8 +11,6 @@
 namespace Swoft\Test\Cases\Another;
 
 use App\Models\Service\AmqpDemoPublisher;
-use App\Models\Validator\TestValidator;
-use Swoft\Test\AbstractTestCase;
 use Swoft\Test\HttpTestCase;
 
 class AmqpTest extends HttpTestCase
@@ -33,6 +31,4 @@ class AmqpTest extends HttpTestCase
         $file = alias('@runtime/' . $id);
         $this->assertEquals(file_get_contents($file), $id);
     }
-
-
 }

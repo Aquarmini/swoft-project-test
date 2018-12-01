@@ -12,7 +12,6 @@ namespace Swoft\Test\Cases;
 use App\Core\Queue\Queue;
 use App\Jobs\TestJob;
 use App\Jobs\ThrowJob;
-use App\Models\Entity\User;
 use Swoft\Redis\Redis;
 use Swoft\Task\Task;
 use Swoft\Test\AbstractTestCase;

@@ -1,9 +1,15 @@
 <?php
-
+/**
+ * This file is part of Swoft.
+ *
+ * @link     https://swoft.org
+ * @document https://doc.swoft.org
+ * @contact  limingxin@swoft.org
+ * @license  https://github.com/swoft-cloud/swoft/blob/master/LICENSE
+ */
 
 namespace App\Models\Service;
 
-use App\Core\AmqpConnection;
 use Swoft\App;
 use Swoft\Pool\ConnectionInterface;
 use Swoftx\Amqplib\Connection;
@@ -23,7 +29,6 @@ class AmqpDemoPublisher extends Publisher
     {
         $pool = App::getPool(RabbitMQPool::class);
         $this->swoftConnection = $pool->getConnection();
-        /** @var AmqpConnection $conn */
         return $this->swoftConnection->getConnection();
     }
 

@@ -10,7 +10,6 @@
 
 namespace App\Boot;
 
-use App\Core\Queue\Queue;
 use App\Models\Service\AmqpDemoConsumer;
 use Swoft\App;
 use Swoft\Process\Bean\Annotation\Process;
